@@ -3,7 +3,7 @@
 This container is built automatically whenever code is pushed to master at https://github.com/Motion-Project/motion .
 
 ## Caveats
-- If you use /dev/video, locally attached cameras or the database features of Motion, this container won't work for you at this stage.  
+- If you use ~~/dev/video, locally attached cameras or~~ the database features of Motion, this container won't work for you at this stage.
 - This is built directly from git master, if you want something more stable grab a prebuilt release from [here](https://github.com/Motion-Project/motion/releases) and install manually.
 
 ## How to run
@@ -19,10 +19,11 @@ docker run -d --name=motion \
     -p 8084:8084 \
     -p 8085:8085 \
     -p 8087:8087 \
-    -e TZ="Australia/Brisbane" \
-    -v /volume1/motion/config:/usr/local/etc/motion \
+    -e TZ="Europe/Zurich" \
+    -v /home/gu-ma/.motion:/usr/local/etc/motion \
     -v /volume1/motion/storage:/var/lib/motion \
     --restart=always \
+    --device /dev/video0 \
     motionproject/motion:latest
 ```
 ## How to Update
